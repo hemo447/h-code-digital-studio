@@ -4,19 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080d16">
-<meta name="description" content="H-CODE DIGITAL STUDIO - تصميم المواقع والبرمجة وحلول الذكاء الاصطناعي">
+<meta name="description" content="H-CODE DIGITAL STUDIO يقدم خدمات تصميم المواقع والمتاجر الإلكترونية والبرمجة وحلول الذكاء الاصطناعي بتجربة عصرية ومتجاوبة.">
+<meta name="robots" content="index,follow">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_YE">
+<meta property="og:site_name" content="H-CODE DIGITAL STUDIO">
+<meta property="og:title" content="H-CODE DIGITAL STUDIO | حلولك الرقمية">
+<meta property="og:description" content="نحوّل أفكارك إلى تجارب رقمية احترافية. اكتشف خدمات تصميم المواقع والبرمجة والحلول الذكية.">
+<meta name="twitter:card" content="summary">
+
 <title>H-CODE DIGITAL STUDIO | حلولك الرقمية</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<style>
 :root {
+  color-scheme: dark;
   --bg: #080d16;
   --panel: #101827;
   --blue: #2589ff;
   --cyan: #00e5ff;
   --text: #f4f7ff;
   --muted: #a4b0c5;
+  --line: #24354d;
 }
 
 * {
@@ -27,13 +40,28 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 95px;
 }
 
 body {
   font-family: 'Cairo', sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .16;
+  background-image:
+    linear-gradient(rgba(57,112,173,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,112,173,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
 }
 
 a {
@@ -41,18 +69,43 @@ a {
   text-decoration: none;
 }
 
+button, input, select, textarea {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .container {
   width: min(1120px, 90%);
-  margin: auto;
+  margin-inline: auto;
 }
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  right: 12px;
+  z-index: 100;
+  padding: 10px 15px;
+  background: var(--cyan);
+  color: #04101d;
+  border-radius: 8px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* القائمة الرئيسية */
 
 header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 50;
   background: rgba(8,13,22,.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid #1b2b42;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #24354d;
 }
 
 nav {
@@ -60,13 +113,14 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 18px;
 }
 
 .logo {
   font-size: 23px;
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: -.8px;
+  white-space: nowrap;
 }
 
 .logo span {
@@ -75,44 +129,87 @@ nav {
 
 .navlinks {
   display: flex;
-  gap: 22px;
-  font-size: 14px;
+  align-items: center;
+  gap: 18px;
   color: var(--muted);
+  font-size: 13px;
 }
 
-.navlinks a:hover {
+.navlinks a {
+  transition: color .2s;
+}
+
+.navlinks a:hover,
+.navlinks a:focus-visible {
   color: var(--cyan);
 }
+
+.nav-cta {
+  padding: 9px 14px;
+  border: 1px solid #2589ff77;
+  border-radius: 10px;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+/* الواجهة الرئيسية */
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 100px 0 85px;
+  padding: 105px 0 90px;
   background:
     radial-gradient(ellipse at 15% 25%, #123b6b66, transparent 45%),
     radial-gradient(ellipse at 90% 70%, #063d4d55, transparent 40%);
 }
 
+.hero::after {
+  content: "H";
+  position: absolute;
+  left: 7%;
+  top: 5%;
+  font-size: clamp(190px, 30vw, 390px);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(0,229,255,.025);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+}
+
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 6px 15px;
   border: 1px solid #2589ff66;
   border-radius: 50px;
   color: var(--cyan);
   background: #2589ff12;
   font-size: 13px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
 }
 
 .hero h1 {
-  font-size: clamp(34px, 6vw, 65px);
+  font-size: clamp(35px, 6vw, 66px);
   line-height: 1.4;
   font-weight: 900;
-  max-width: 850px;
 }
 
 .gradient {
-  background: linear-gradient(90deg, #00e5ff, #4d8dff, #a18bff);
+  background: linear-gradient(100deg, #00e5ff, #4d8dff, #a18bff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -121,8 +218,8 @@ nav {
 .hero p {
   color: var(--muted);
   font-size: 17px;
-  max-width: 650px;
-  margin: 20px 0 30px;
+  max-width: 660px;
+  margin: 22px 0 30px;
 }
 
 .buttons {
@@ -135,102 +232,198 @@ nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 23px;
-  border-radius: 10px;
-  font-family: inherit;
+  gap: 9px;
+  padding: 12px 22px;
+  min-height: 48px;
+  border: 1px solid transparent;
+  border-radius: 11px;
   font-weight: 800;
-  transition: .25s;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .22s, box-shadow .22s;
 }
 
 .btn:hover {
   transform: translateY(-3px);
 }
 
+.btn:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
 .primary {
   background: linear-gradient(120deg, #1685ff, #00c9e8);
   color: #04101d;
+  box-shadow: 0 9px 28px #008dff26;
+}
+
+.primary:hover {
+  box-shadow: 0 12px 35px #008dff40;
 }
 
 .secondary {
-  border: 1px solid #33445d;
+  border-color: #33445d;
   background: #101827;
 }
 
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-top: 32px;
+  color: #bdc9da;
+  font-size: 12px;
+}
+
+.hero-trust b {
+  color: var(--cyan);
+  margin-left: 5px;
+}
+
+/* الأقسام العامة */
+
 section {
-  padding: 75px 0;
+  padding: 80px 0;
 }
 
 .section-head {
   text-align: center;
-  margin-bottom: 38px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.section-kicker {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .section-head h2 {
-  font-size: clamp(27px, 4vw, 39px);
+  font-size: clamp(27px, 4vw, 40px);
+  line-height: 1.5;
   font-weight: 900;
+  margin-top: 6px;
 }
 
 .section-head p {
   color: var(--muted);
-  margin-top: 8px;
+  margin-top: 9px;
+  font-size: 14px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .card {
+  min-width: 0;
   background: linear-gradient(145deg, #121e30, #0c1320);
-  border: 1px solid #24354d;
-  border-radius: 18px;
-  padding: 27px;
-  transition: .3s;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--blue);
-  box-shadow: 0 15px 40px #007bff14;
+  box-shadow: 0 16px 42px #007bff12;
 }
 
 .icon {
-  font-size: 34px;
-  margin-bottom: 12px;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 27px;
+  margin-bottom: 17px;
+  background: linear-gradient(145deg, #2589ff20, #00e5ff0d);
+  border: 1px solid #2589ff30;
 }
 
 .card h3 {
-  font-size: 19px;
-  margin-bottom: 9px;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .card p {
-  font-size: 14px;
   color: var(--muted);
+  font-size: 13px;
+  line-height: 1.95;
 }
+
+/* الخدمات */
+
+#services {
+  background: transparent;
+}
+
+/* لماذا تختارنا؟ */
 
 #about {
   background: #0b111d;
 }
 
 .about-box {
-  padding: 35px;
-  border-radius: 20px;
-  border: 1px solid #24354d;
-  background: linear-gradient(120deg, #111d2e, #0b1422);
+  padding: clamp(25px, 5vw, 45px);
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 100% 0%, #14518a22, transparent 40%),
+    linear-gradient(120deg, #111d2e, #0b1422);
+  box-shadow: 0 24px 70px #00000020;
+}
+
+.about-box h2 {
+  font-size: clamp(25px, 4vw, 36px);
+  line-height: 1.5;
 }
 
 .about-box p {
   color: var(--muted);
-  margin-top: 12px;
+  margin-top: 14px;
+  max-width: 850px;
+  font-size: 14px;
 }
 
+.about-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.about-point {
+  border: 1px solid #2b405b;
+  background: #09132180;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.about-point span {
+  color: var(--cyan);
+  margin-left: 7px;
+}
+
+/* قسم الأعمال: محفوظ للتطوير لاحقًا */
+
 .work-card {
-  min-height: 190px;
+  min-height: 205px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.work-card:nth-child(1) {
   background:
     radial-gradient(circle at 80% 20%, #008cff55, transparent 45%),
     linear-gradient(145deg, #142944, #0b1321);
@@ -248,6 +441,26 @@ section {
     linear-gradient(145deg, #142944, #0b1321);
 }
 
+/* خطوات العمل */
+
+.step-card {
+  position: relative;
+}
+
+.step-number {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.step-number span {
+  color: #637b9b;
+  margin-left: 8px;
+}
+
+/* الباقات */
+
 .price {
   color: var(--cyan);
   font-size: 25px;
@@ -255,68 +468,361 @@ section {
   margin: 12px 0;
 }
 
-.contact-box {
-  text-align: center;
-  padding: 40px 25px;
-  background: linear-gradient(145deg, #102641, #0c1421);
-  border: 1px solid #285078;
-  border-radius: 22px;
+.price-label {
+  display: inline-block;
+  align-self: flex-start;
+  color: var(--cyan);
+  background: #2589ff16;
+  border: 1px solid #2589ff44;
+  padding: 3px 9px;
+  border-radius: 30px;
+  font-size: 10px;
+  margin-bottom: 10px;
 }
 
-.contact-box p {
-  color: var(--muted);
-  margin: 12px auto 25px;
-  max-width: 600px;
+.price-card {
+  display: flex;
+  flex-direction: column;
 }
+
+.price-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.price-card.featured {
+  border-color: var(--blue);
+  box-shadow: inset 0 0 0 1px #2589ff22, 0 15px 40px #007bff10;
+}
+
+.feature-list {
+  list-style: none;
+  margin: 16px 0 22px;
+  display: grid;
+  gap: 9px;
+}
+
+.feature-list li {
+  color: #c7d2e3;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.feature-list li::before {
+  content: "✓";
+  color: var(--cyan);
+  font-weight: 900;
+}
+
+.price-note {
+  color: #8f9db3;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* التواصل */
+
+#contact {
+  background: radial-gradient(ellipse at 50% 100%, #063d4d33, transparent 55%);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.contact-info,
+.contact-form {
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid #285078;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #102641, #0c1421);
+}
+
+.contact-info h2 {
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.5;
+}
+
+.contact-info > p {
+  color: var(--muted);
+  margin: 12px 0 22px;
+  font-size: 14px;
+}
+
+.contact-method {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid #ffffff0c;
+}
+
+.contact-method .icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  font-size: 21px;
+}
+
+.contact-method small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.contact-method strong {
+  font-size: 13px;
+}
+
+.contact-form h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.form-intro {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  color: #dbe5f4;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-width: 0;
+  color: var(--text);
+  background: #080f1b;
+  border: 1px solid #2b405b;
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #6f819b;
+}
+
+.field select option {
+  background: #080f1b;
+}
+
+.field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.contact-form .btn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.form-help {
+  color: #8999b1;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+/* التذييل */
 
 footer {
   border-top: 1px solid #1d2b3f;
-  padding: 25px 0;
+  padding: 27px 0;
   color: var(--muted);
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 footer strong {
   color: var(--cyan);
+  font-size: 15px;
 }
 
-@media (max-width: 750px) {
+.footer-tagline {
+  margin: 4px 0 8px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.footer-links a:hover {
+  color: var(--cyan);
+}
+
+/* زر العودة للأعلى */
+
+.back-top {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 20;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  border: 1px solid #2e4b6c;
+  background: #101827;
+  color: var(--cyan);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: .2s ease;
+}
+
+.back-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* الأجهزة المتوسطة */
+
+@media (max-width: 950px) {
   .navlinks {
-    gap: 10px;
+    gap: 12px;
     font-size: 12px;
   }
 
-  .logo {
-    font-size: 19px;
+  .nav-cta {
+    display: none;
   }
 
-  .hero {
-    padding: 75px 0 60px;
-  }
-
-  .grid {
+  .contact-layout {
     grid-template-columns: 1fr;
-  }
-
-  section {
-    padding: 55px 0;
-  }
-
-  .about-box {
-    padding: 24px;
   }
 }
 
-@media (max-width: 380px) {
+/* الهواتف */
+
+@media (max-width: 650px) {
+  .container {
+    width: min(100% - 32px, 520px);
+  }
+
   nav {
+    min-height: 70px;
+    gap: 10px;
     flex-wrap: wrap;
     padding: 12px 0;
   }
 
+  .logo {
+    font-size: 20px;
+  }
+
   .navlinks {
+    order: 2;
     width: 100%;
-    justify-content: space-between;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 4px 0 7px;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .navlinks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero {
+    padding: 70px 0 58px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 9vw, 48px);
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .hero-trust {
+    gap: 10px 14px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 23px;
+  }
+
+  .about-points {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .contact-info,
+  .contact-form {
+    padding: 23px;
+  }
+
+  .buttons .btn {
+    flex: 1 1 100%;
+  }
+
+  .back-top {
+    left: 12px;
+    bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 </style>
@@ -324,50 +830,89 @@ footer strong {
 
 <body>
 
+<a class="skip-link" href="#main">تجاوز إلى المحتوى</a>
+
 <header>
   <div class="container">
-    <nav>
-      <a class="logo" href="#home">H-<span>CODE</span></a>
+    <nav aria-label="القائمة الرئيسية">
+
+      <a class="logo" href="#home" aria-label="H-CODE DIGITAL STUDIO">
+        H-<span>CODE</span>
+      </a>
 
       <div class="navlinks">
         <a href="#home">الرئيسية</a>
         <a href="#services">خدماتنا</a>
+        <a href="#about">لماذا نحن؟</a>
         <a href="#works">أعمالنا</a>
+        <a href="#pricing">الباقات</a>
         <a href="#contact">تواصل معنا</a>
       </div>
+
+      <a class="nav-cta" href="#contact">ابدأ مشروعك ↗</a>
+
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
+
+<!-- الواجهة الرئيسية -->
 
 <section class="hero" id="home">
-  <div class="container">
-    <span class="badge">✦ استوديو الحلول الرقمية</span>
+  <div class="container hero-content">
+
+    <span class="badge">
+      <span class="badge-dot"></span>
+      استوديو الحلول الرقمية
+    </span>
 
     <h1>
       نحوّل أفكارك إلى<br>
-      <span class="gradient">مشاريع رقمية ناجحة</span>
+      <span class="gradient">تجارب رقمية تصنع الفرق</span>
     </h1>
 
     <p>
-      نصمم مواقع إلكترونية عصرية، ونطور حلولًا برمجية ذكية،
-      ونساعد الشركات والمتاجر على بناء حضور رقمي احترافي.
-      فكرتك تستحق أن ترى النور.
+      نصمم مواقع إلكترونية عصرية، ونطوّر حلولًا برمجية ذكية،
+      ونساعد المشاريع على بناء حضور رقمي احترافي.
+      فكرتك تستحق أن ترى النور، ودعنا نبدأ بتحويلها إلى واقع.
     </p>
 
     <div class="buttons">
-      <a href="#services" class="btn primary">اكتشف خدماتنا ←</a>
-      <a href="#contact" class="btn secondary">اطلب مشروعك</a>
+      <a href="#services" class="btn primary">
+        اكتشف خدماتنا ←
+      </a>
+
+      <a href="#contact" class="btn secondary">
+        ناقش مشروعك معنا
+      </a>
     </div>
+
+    <div class="hero-trust">
+      <span><b>✦</b> تصميم يركز على المستخدم</span>
+      <span><b>✦</b> تجربة متجاوبة مع الشاشات</span>
+      <span><b>✦</b> حلول حسب احتياجك</span>
+    </div>
+
   </div>
 </section>
 
+<!-- الخدمات -->
+
 <section id="services">
   <div class="container">
+
     <div class="section-head">
-      <h2>خدمات <span class="gradient">احترافية</span></h2>
-      <p>حلول تقنية تساعد مشروعك على النمو والتطور.</p>
+      <span class="section-kicker">ما الذي نقدمه؟</span>
+
+      <h2>
+        خدمات <span class="gradient">رقمية متكاملة</span>
+      </h2>
+
+      <p>
+        نساعدك على تقديم مشروعك بصورة احترافية،
+        من الفكرة الأولى إلى التجربة الرقمية.
+      </p>
     </div>
 
     <div class="grid">
@@ -375,66 +920,121 @@ footer strong {
       <article class="card">
         <div class="icon">💻</div>
         <h3>تصميم المواقع</h3>
-        <p>مواقع عصرية ومتجاوبة مع الهواتف وأجهزة الكمبيوتر، مصممة لتقديم مشروعك بأفضل صورة.</p>
+        <p>
+          مواقع عصرية ومتجاوبة مع الهواتف وأجهزة الكمبيوتر،
+          مصممة لتقديم مشروعك بأفضل صورة.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">🛒</div>
         <h3>المتاجر الإلكترونية</h3>
-        <p>متاجر لعرض المنتجات والأسعار واستقبال طلبات العملاء بطريقة منظمة وسهلة.</p>
+        <p>
+          متاجر لعرض المنتجات والأسعار واستقبال طلبات العملاء
+          بطريقة منظمة وسهلة.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">🤖</div>
         <h3>حلول الذكاء الاصطناعي</h3>
-        <p>أفكار وأدوات ذكية تساعد على تطوير الأعمال وتحسين تجربة المستخدم.</p>
+        <p>
+          أفكار وأدوات ذكية تساعد على تطوير الأعمال
+          وتحسين تجربة المستخدم.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">⚙️</div>
         <h3>البرمجة والتطوير</h3>
-        <p>تطوير صفحات الويب والواجهات والميزات المخصصة بحسب احتياجات المشروع.</p>
+        <p>
+          تطوير صفحات الويب والواجهات والميزات المخصصة
+          وفق متطلبات المشروع.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">📊</div>
         <h3>لوحات التحكم</h3>
-        <p>واجهات منظمة لعرض البيانات ومتابعة المعلومات وإدارة العمليات الرقمية.</p>
+        <p>
+          واجهات منظمة لعرض البيانات ومتابعة المعلومات
+          وإدارة العمليات الرقمية بسهولة.
+        </p>
       </article>
 
       <article class="card">
         <div class="icon">✨</div>
-        <h3>تطوير المشاريع</h3>
-        <p>نساعدك على تحويل فكرتك إلى نموذج أولي رقمي قابل للتجربة والتطوير.</p>
+        <h3>تطوير الأفكار</h3>
+        <p>
+          نساعدك على تحويل فكرتك إلى نموذج أولي رقمي
+          قابل للتجربة والتطوير خطوة بخطوة.
+        </p>
       </article>
 
     </div>
   </div>
 </section>
 
+<!-- لماذا تختارنا؟ -->
+
 <section id="about">
   <div class="container">
+
     <div class="about-box">
-      <span class="badge">من نحن؟</span>
-      <h2>التقنية تبدأ بفكرة، <span class="gradient">والنجاح يبدأ بالتنفيذ.</span></h2>
+
+      <span class="badge">لماذا تختار H-CODE؟</span>
+
+      <h2>
+        شريكك التقني من الفكرة إلى
+        <span class="gradient">التنفيذ</span>
+      </h2>
+
       <p>
-        H-CODE DIGITAL STUDIO مساحة تقنية تهتم بتصميم المواقع
-        وتطوير الحلول الرقمية. نركز على البساطة والجودة وتجربة
-        المستخدم، ونسعى إلى تقديم حلول تناسب احتياجات المشاريع
-        وتساعد أصحابها على التقدم بثقة.
+        في H-CODE DIGITAL STUDIO نهتم بأن يكون الحل مناسبًا لهدفك،
+        واضحًا في استخدامه، ومتناسقًا في تصميمه.
+        نبدأ بفهم احتياجك، ثم نحدد نطاق العمل والتفاصيل قبل التنفيذ،
+        حتى تكون التوقعات واضحة من البداية.
       </p>
+
+      <div class="about-points">
+
+        <div class="about-point">
+          <span>✦</span>
+          تصميم حديث ومتجاوب
+        </div>
+
+        <div class="about-point">
+          <span>✦</span>
+          اهتمام بالتفاصيل وتجربة المستخدم
+        </div>
+
+        <div class="about-point">
+          <span>✦</span>
+          تواصل واضح خلال مراحل العمل
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
+<!-- قسم الأعمال محفوظ كما هو لتطويره لاحقًا -->
+
 <section id="works">
   <div class="container">
+
     <div class="section-head">
-      <h2>مجالات <span class="gradient">أعمالنا</span></h2>
-      <p>نماذج من أنواع المشاريع التي يمكننا تنفيذها.</p>
+      <h2>
+        مجالات <span class="gradient">أعمالنا</span>
+      </h2>
+
+      <p>
+        نماذج من أنواع المشاريع التي يمكننا تنفيذها.
+      </p>
     </div>
 
     <div class="grid">
+
       <article class="card work-card">
         <div class="icon">📱</div>
         <h3>مواقع المتاجر</h3>
@@ -452,77 +1052,473 @@ footer strong {
         <h3>المشاريع الذكية</h3>
         <p>واجهات وتجارب رقمية مدعومة بالذكاء الاصطناعي.</p>
       </article>
+
     </div>
   </div>
 </section>
 
-<section id="pricing">
+<!-- كيف نعمل؟ -->
+
+<section id="process">
   <div class="container">
+
     <div class="section-head">
-      <h2>باقات <span class="gradient">مبدئية</span></h2>
-      <p>تتحدد التكلفة النهائية وفق تفاصيل كل مشروع.</p>
+      <span class="section-kicker">خطوات واضحة</span>
+
+      <h2>
+        كيف <span class="gradient">نعمل؟</span>
+      </h2>
+
+      <p>
+        خطوات منظمة تساعدنا على فهم احتياجك
+        وتحديد الطريق المناسب لتنفيذ مشروعك.
+      </p>
     </div>
 
     <div class="grid">
-      <article class="card">
-        <h3>الصفحة التعريفية</h3>
-        <div class="price">ابتداءً من $20</div>
-        <p>صفحة واحدة للتعريف بمشروعك وخدماتك مع وسيلة للتواصل.</p>
+
+      <article class="card step-card">
+        <div class="step-number">
+          <span>01 /</span> فهم الفكرة
+        </div>
+        <h3>نستمع إلى احتياجك</h3>
+        <p>
+          نناقش الهدف والجمهور والميزات التي تحتاجها،
+          ونحدد نطاق العمل الأولي.
+        </p>
       </article>
 
-      <article class="card">
-        <h3>موقع الأعمال</h3>
-        <div class="price">ابتداءً من $50</div>
-        <p>موقع متعدد الأقسام لعرض الخدمات ومعلومات المشروع.</p>
+      <article class="card step-card">
+        <div class="step-number">
+          <span>02 /</span> التخطيط
+        </div>
+        <h3>نرتب التفاصيل</h3>
+        <p>
+          نضع تصورًا للأقسام والتصميم والوظائف المطلوبة،
+          ونوضح التكلفة والمدة بعد الاتفاق على المتطلبات.
+        </p>
       </article>
 
-      <article class="card">
-        <h3>مشروع مخصص</h3>
-        <div class="price">حسب الطلب</div>
-        <p>حلول ومواقع ذات متطلبات خاصة وفق الاتفاق مع العميل.</p>
+      <article class="card step-card">
+        <div class="step-number">
+          <span>03 /</span> التطوير
+        </div>
+        <h3>نحوّل الخطة إلى واقع</h3>
+        <p>
+          ننفذ التصميم والوظائف المتفق عليها
+          مع الاهتمام بالتوافق مع مختلف الشاشات.
+        </p>
       </article>
+
+      <article class="card step-card">
+        <div class="step-number">
+          <span>04 /</span> المراجعة والتسليم
+        </div>
+        <h3>نتأكد من التفاصيل</h3>
+        <p>
+          نراجع النتيجة معك ونعالج الملاحظات الداخلة
+          ضمن نطاق العمل قبل التسليم النهائي.
+        </p>
+      </article>
+
     </div>
-
-    <p style="text-align:center;color:#8f9db3;font-size:12px;margin-top:20px">
-      الأسعار استرشادية وليست عرضًا نهائيًا، ولا تشمل بالضرورة النطاق والاستضافة والخدمات الخارجية.
-    </p>
   </div>
 </section>
 
+<!-- الباقات والأسعار -->
+
+<section id="pricing">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="section-kicker">خيارات مرنة</span>
+
+      <h2>
+        اختر الباقة
+        <span class="gradient">المناسبة لمشروعك</span>
+      </h2>
+
+      <p>
+        أسعار مبدئية للتوجيه فقط،
+        ويُحدد السعر النهائي بعد معرفة تفاصيل المشروع.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card price-card">
+
+        <h3>الصفحة التعريفية</h3>
+
+        <p>
+          للتعريف بنشاطك أو خدمتك على الإنترنت.
+        </p>
+
+        <div class="price">ابتداءً من $20</div>
+
+        <ul class="feature-list">
+          <li>صفحة واحدة بتصميم متجاوب</li>
+          <li>عرض نبذة عن المشروع والخدمات</li>
+          <li>زر تواصل مباشر</li>
+          <li>تنسيق مناسب لهوية المشروع</li>
+        </ul>
+
+        <a class="btn secondary"
+           href="#contact"
+           data-service="الصفحة التعريفية">
+          اطلب هذه الباقة
+        </a>
+
+      </article>
+
+      <article class="card price-card featured">
+
+        <span class="price-label">للأنشطة المتنامية</span>
+
+        <h3>موقع الأعمال</h3>
+
+        <p>
+          للعلامات التجارية التي تحتاج إلى حضور أكثر شمولًا.
+        </p>
+
+        <div class="price">ابتداءً من $50</div>
+
+        <ul class="feature-list">
+          <li>عدة أقسام لعرض النشاط والخدمات</li>
+          <li>تنقل منظم بين أقسام الموقع</li>
+          <li>قسم للتعريف والتواصل</li>
+          <li>تصميم متجاوب مع الشاشات</li>
+        </ul>
+
+        <a class="btn primary"
+           href="#contact"
+           data-service="موقع الأعمال">
+          اطلب هذه الباقة
+        </a>
+
+      </article>
+
+      <article class="card price-card">
+
+        <h3>مشروع مخصص</h3>
+
+        <p>
+          للمتطلبات الخاصة أو الوظائف البرمجية الإضافية.
+        </p>
+
+        <div class="price">حسب الطلب</div>
+
+        <ul class="feature-list">
+          <li>تحديد المتطلبات مع العميل</li>
+          <li>تقدير العمل حسب نطاق المشروع</li>
+          <li>إمكانية إضافة وظائف مخصصة</li>
+          <li>اتفاق واضح قبل بدء التنفيذ</li>
+        </ul>
+
+        <a class="btn secondary"
+           href="#contact"
+           data-service="مشروع مخصص">
+          ناقش فكرتك
+        </a>
+
+      </article>
+
+    </div>
+
+    <p class="price-note">
+      الأسعار استرشادية وليست عرضًا نهائيًا.
+      النطاق والاستضافة والصيانة والخدمات الخارجية
+      غير مشمولة تلقائيًا، وتُناقش بحسب كل مشروع.
+    </p>
+
+  </div>
+</section>
+
+<!-- التواصل ونموذج طلب الخدمة -->
+
 <section id="contact">
   <div class="container">
-    <div class="contact-box">
-      <span class="badge">لنبدأ مشروعك</span>
-      <h2>هل لديك فكرة تريد تنفيذها؟</h2>
-      <p>
-        أخبرنا عن مشروعك والخدمة التي تحتاج إليها،
-        وسنتواصل معك لمناقشة التفاصيل والتكلفة المناسبة.
-      </p>
 
-      <a
-        class="btn primary"
-        href="https://wa.me/967774505092?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%AE%D8%AF%D9%85%D8%A9%20%D9%85%D9%86%20H-CODE%20DIGITAL%20STUDIO"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        تواصل عبر واتساب ↗
-      </a>
+    <div class="section-head">
+      <span class="section-kicker">خطوتك التالية تبدأ هنا</span>
+
+      <h2>
+        لديك فكرة؟
+        <span class="gradient">دعنا نتحدث عنها</span>
+      </h2>
+
+      <p>
+        أرسل تفاصيل أولية عن مشروعك
+        لتسهيل مناقشة الخدمة المناسبة والخطوات التالية.
+      </p>
+    </div>
+
+    <div class="contact-layout">
+
+      <div class="contact-info">
+
+        <span class="badge">تواصل مباشر</span>
+
+        <h2>
+          نبني الحل المناسب
+          <span class="gradient">لاحتياجك</span>
+        </h2>
+
+        <p>
+          سواء كنت تبدأ فكرة جديدة أو تطوّر نشاطًا قائمًا،
+          شاركنا احتياجك وسنناقش معك التفاصيل والتكلفة المتوقعة.
+        </p>
+
+        <div class="contact-method">
+          <div class="icon">💬</div>
+          <div>
+            <small>واتساب</small>
+            <strong dir="ltr">+967 774 505 092</strong>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="icon">⚡</div>
+          <div>
+            <small>الخدمة</small>
+            <strong>مناقشة متطلبات المشروع</strong>
+          </div>
+        </div>
+
+        <a
+          class="btn primary"
+          href="https://wa.me/967774505092"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top:18px;width:100%"
+        >
+          افتح واتساب مباشرة ↗
+        </a>
+
+      </div>
+
+      <form class="contact-form" id="contactForm">
+
+        <h3>أرسل تفاصيل مشروعك</h3>
+
+        <p class="form-intro">
+          املأ البيانات التالية، وسنجهّز رسالة يمكنك إرسالها عبر واتساب.
+        </p>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="name">الاسم *</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              placeholder="اكتب اسمك"
+              required
+              maxlength="80"
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">رقم التواصل (اختياري)</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              placeholder="رقم الهاتف"
+            >
+          </div>
+
+          <div class="field">
+            <label for="service">الخدمة المطلوبة *</label>
+
+            <select id="service" name="service" required>
+              <option value="">اختر الخدمة</option>
+              <option value="تصميم المواقع">تصميم المواقع</option>
+              <option value="متجر إلكتروني">متجر إلكتروني</option>
+              <option value="حلول الذكاء الاصطناعي">حلول الذكاء الاصطناعي</option>
+              <option value="البرمجة والتطوير">البرمجة والتطوير</option>
+              <option value="لوحة تحكم">لوحة تحكم</option>
+              <option value="الصفحة التعريفية">الصفحة التعريفية</option>
+              <option value="موقع الأعمال">موقع الأعمال</option>
+              <option value="مشروع مخصص">مشروع مخصص</option>
+              <option value="خدمة أخرى">خدمة أخرى</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="budget">الميزانية المتوقعة (اختياري)</label>
+
+            <select id="budget" name="budget">
+              <option value="">أفضل مناقشتها أولًا</option>
+              <option>أقل من 20 دولارًا</option>
+              <option>20–50 دولارًا</option>
+              <option>50–100 دولار</option>
+              <option>أكثر من 100 دولار</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="details">وصف مختصر للمشروع *</label>
+
+            <textarea
+              id="details"
+              name="details"
+              required
+              maxlength="1200"
+              placeholder="ما الفكرة؟ وما أهم الميزات التي تحتاجها؟"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <button class="btn primary" type="submit">
+          متابعة الطلب عبر واتساب ↗
+        </button>
+
+        <p class="form-help">
+          لن تُرسل البيانات تلقائيًا إلى خادم.
+          عند الضغط على الزر ستفتح واتساب برسالة جاهزة
+          لتراجعها وترسلها بنفسك.
+        </p>
+
+      </form>
+
     </div>
   </div>
 </section>
 
 </main>
 
+<!-- التذييل -->
+
 <footer>
   <div class="container">
+
     <p><strong>H-CODE DIGITAL STUDIO</strong></p>
-    <p>نحوّل الأفكار إلى تجارب رقمية.</p>
-    <p>© <span id="year"></span> جميع الحقوق محفوظة.</p>
+
+    <p class="footer-tagline">
+      نحوّل الأفكار إلى تجارب رقمية.
+    </p>
+
+    <div class="footer-links">
+      <a href="#services">خدماتنا</a>
+      <a href="#about">لماذا نحن؟</a>
+      <a href="#works">أعمالنا</a>
+      <a href="#pricing">الباقات</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+
+    <p>
+      © <span id="year"></span>
+      H-CODE DIGITAL STUDIO — جميع الحقوق محفوظة.
+    </p>
+
   </div>
 </footer>
 
+<a
+  href="#home"
+  class="back-top"
+  id="backTop"
+  aria-label="العودة إلى أعلى الصفحة"
+>↑</a>
+
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+(() => {
+
+  // تحديث السنة تلقائيًا
+  const year = document.getElementById('year');
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  // إظهار زر العودة للأعلى
+  const backTop = document.getElementById('backTop');
+
+  const toggleBackTop = () => {
+    if (backTop) {
+      backTop.classList.toggle(
+        'visible',
+        window.scrollY > 500
+      );
+    }
+  };
+
+  window.addEventListener(
+    'scroll',
+    toggleBackTop,
+    { passive: true }
+  );
+
+  toggleBackTop();
+
+  // اختيار الباقة يحدد الخدمة في نموذج التواصل
+  document.querySelectorAll('[data-service]').forEach((link) => {
+
+    link.addEventListener('click', () => {
+
+      const serviceSelect = document.getElementById('service');
+
+      if (!serviceSelect) return;
+
+      const wanted = link.getAttribute('data-service');
+
+      const option = Array.from(serviceSelect.options).find(
+        (item) => item.value === wanted || item.text === wanted
+      );
+
+      if (option) {
+        serviceSelect.value = option.value || option.text;
+      }
+
+    });
+
+  });
+
+  // تجهيز رسالة الطلب وإرسال المستخدم إلى واتساب
+  const form = document.getElementById('contactForm');
+
+  if (form) {
+
+    form.addEventListener('submit', (event) => {
+
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const budget = document.getElementById('budget').value || 'لم تُحدد بعد';
+      const details = document.getElementById('details').value.trim();
+
+      const message = [
+        'السلام عليكم، أريد طلب خدمة من H-CODE DIGITAL STUDIO.',
+        '',
+        'الاسم: ' + name,
+        'رقم التواصل: ' + (phone || 'لم يُذكر'),
+        'الخدمة المطلوبة: ' + service,
+        'الميزانية المتوقعة: ' + budget,
+        'تفاصيل المشروع: ' + details
+      ].join('\n');
+
+      const whatsappUrl =
+        'https://wa.me/967774505092?text=' +
+        encodeURIComponent(message);
+
+      window.location.href = whatsappUrl;
+
+    });
+
+  }
+
+})();
 </script>
 
 </body>
